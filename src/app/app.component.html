@@ -1,0 +1,13 @@
+<h3>Dividend Discount Model</h3>
+
+<mat-form-field class="example-form-field" appearance="fill">
+  <mat-label>Ticker</mat-label>
+  <input matInput type="text" [(ngModel)]="ticker">
+  <button *ngIf="ticker" matSuffix mat-icon-button aria-label="Clear" (click)="ticker=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+
+<hr>
