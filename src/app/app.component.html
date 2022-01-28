@@ -1,13 +1,81 @@
 <h3>Dividend Discount Model</h3>
 
-<mat-form-field class="example-form-field" appearance="fill">
-  <mat-label>Ticker</mat-label>
-  <input matInput type="text" [(ngModel)]="ticker">
-  <button *ngIf="ticker" matSuffix mat-icon-button aria-label="Clear" (click)="ticker=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
+<div class="inputs">
+  <label>
+    Dividend last year
+    <input type="number" [(ngModel)]="dividend" placeholder="Dividend last year" step="0.001" />
+  </label>
 
-<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+  <label>
+    Expected growth rate in 5 years (percent)
+    <input type="number" [(ngModel)]="growth" placeholder="Expected growth rate (5Y)" min="0.1" step="0.1" />
+  </label>
+
+  <label>
+    Required rate of return (percent, has to be bigger than growth rate)
+    <input type="number" [(ngModel)]="return" placeholder="Required rate of return" min="0.1" step="0.1" />
+  </label>
+
+  <label>
+    Range rate (percent)
+    <input type="number" [(ngModel)]="range" placeholder="Range rate" min="1" step="1" />
+  </label>
+</div>
 
 <hr>
+
+Formula:<br>Fair value = (DividendLatYear * (1 + ExpectedGrowthRate)) / (RequiredRateOfReturn - ExpectedGrowthRate)
+
+<hr>
+
+<table>
+  <caption>Fair Value Matrix</caption>
+  <tr>
+    <td></td>
+    <th scope="col" class="header">Growth (-{{ range * 2 }}%)</th>
+    <th scope="col" class="header">Growth (-{{ range }}%)</th>
+    <th scope="col" class="header">Growth</th>
+    <th scope="col" class="header">Growth (+{{ range }}%)</th>
+    <th scope="col" class="header">Growth (+{{ range * 2 }}%)</th>
+  </tr>
+  <tr>
+    <th scope="row" class="header">Return (+{{ range * 2 }}%)</th>
+    <td class="edge">{{ getFairValue(veryBottom, veryTop) }}</td>
+    <td class="edge">{{ getFairValue(bottom, veryTop) }}</td>
+    <td class="edge">{{ getFairValue(1, veryTop) }}</td>
+    <td class="edge">{{ getFairValue(top, veryTop) }}</td>
+    <td class="edge">{{ getFairValue(veryTop, veryTop) }}</td>
+  </tr>
+  <tr>
+    <th scope="row" class="header">Return (+{{ range }}%)</th>
+    <td class="edge">{{ getFairValue(veryBottom, top) }}</td>
+    <td class="mid">{{ getFairValue(bottom, top) }}</td>
+    <td class="mid">{{ getFairValue(1, top) }}</td>
+    <td class="mid">{{ getFairValue(top, top) }}</td>
+    <td class="edge">{{ getFairValue(veryTop, top) }}</td>
+  </tr>
+  <tr>
+    <th scope="row" class="header">Return</th>
+    <td class="edge">{{ getFairValue(veryBottom, 1) }}</td>
+    <td class="mid">{{ getFairValue(bottom, 1) }}</td>
+    <td class="center">{{ getFairValue(1, 1) }}</td>
+    <td class="mid">{{ getFairValue(top, 1) }}</td>
+    <td class="edge">{{ getFairValue(veryTop, 1) }}</td>
+  </tr>
+  <tr>
+    <th scope="row" class="header">Return (-{{ range }}%)</th>
+    <td class="edge">{{ getFairValue(veryBottom, bottom) }}</td>
+    <td class="mid">{{ getFairValue(bottom, bottom) }}</td>
+    <td class="mid">{{ getFairValue(1, bottom) }}</td>
+    <td class="mid">{{ getFairValue(top, bottom) }}</td>
+    <td class="edge">{{ getFairValue(veryTop, bottom) }}</td>
+  </tr>
+  <tr>
+    <th scope="row" class="header">Return (-{{ range * 2 }}%)</th>
+    <td class="edge">{{ getFairValue(veryBottom, veryBottom) }}</td>
+    <td class="edge">{{ getFairValue(bottom, veryBottom) }}</td>
+    <td class="edge">{{ getFairValue(1, veryBottom) }}</td>
+    <td class="edge">{{ getFairValue(top, veryBottom) }}</td>
+    <td class="edge">{{ getFairValue(veryTop, veryBottom) }}</td>
+  </tr>
+</table>
