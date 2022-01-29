@@ -9,11 +9,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 
 const MAT_MODULES = [
   MatSliderModule,
   MatInputModule,
   MatIconModule,
+  MatTabsModule,
 ];
 
 @NgModule({
