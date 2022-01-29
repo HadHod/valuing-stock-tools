@@ -4,22 +4,24 @@
   flex-direction: column;
 }
 
-td {
-  padding: 48px;
-}
+.fair-value-matrix {
+  td {
+    padding: 36px;
+  }
 
-.center {
-  background-color: #90EE90;
-}
+  .center {
+    background-color: #90EE90;
+  }
 
-.mid {
-  background-color: #F0E68C;
-}
+  .mid {
+    background-color: #F0E68C;
+  }
 
-.edge {
-  background-color: #F08080;
-}
+  .edge {
+    background-color: #F08080;
+  }
 
-.header {
-  background-color: #87CEFA;
+  .header {
+    background-color: #87CEFA;
+  }
 }

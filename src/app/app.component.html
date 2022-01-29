@@ -24,11 +24,26 @@
 
 <hr>
 
-Formula:<br>Fair value = (DividendLatYear * (1 + ExpectedGrowthRate)) / (RequiredRateOfReturn - ExpectedGrowthRate)
+<table>
+  <tr>
+    <td>Fair Value</td>
+    <td> = (DividendLastYear</td>
+    <td> * (1 + ExpectedGrowthRate</td>
+    <td>)) / (RequiredRateOfReturn</td>
+    <td> - ExpectedGrowthRate)</td>
+  </tr>
+  <tr>
+    <td>{{ getFairValue(1, 1) }}</td>
+    <td> = ({{ dividend }}</td>
+    <td> * (1 + {{ growth }}%</td>
+    <td>)) / ({{ return }}%</td>
+    <td> - {{ growth }}%)</td>
+  </tr>
+</table>
 
 <hr>
 
-<table>
+<table class="fair-value-matrix">
   <caption>Fair Value Matrix</caption>
   <tr>
     <td></td>
