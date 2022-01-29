@@ -1,34 +1,37 @@
 <h3>Dividend Discount Model</h3>
 
-<div class="inputs">
-  <label>
-    Dividend last year
-    <input type="number" [(ngModel)]="dividend" placeholder="Dividend last year" step="0.001" />
-  </label>
+<div class="input-data">
+  <mat-form-field appearance="fill" class="input-data__input">
+    <mat-label>Dividend last year</mat-label>
+    <input matInput type="number" placeholder="2.5" min="0.001" step="0.001" [(ngModel)]="dividend">
+  </mat-form-field>
 
-  <label>
-    Expected growth rate in 5 years (percent)
-    <input type="number" [(ngModel)]="growth" placeholder="Expected growth rate (5Y)" min="0.1" step="0.1" />
-  </label>
+  <mat-form-field appearance="fill" class="input-data__input">
+    <mat-label>Expected growth rate in 5Y</mat-label>
+    <input matInput type="number" placeholder="5" min="0.1" step="0.1" [(ngModel)]="growth">
+    <span matSuffix>%</span>
+  </mat-form-field>
 
-  <label>
-    Required rate of return (percent, has to be bigger than growth rate)
-    <input type="number" [(ngModel)]="return" placeholder="Required rate of return" min="0.1" step="0.1" />
-  </label>
+  <mat-form-field appearance="fill" class="input-data__input">
+    <mat-label>Required rate of return (has to be higher than growth rate)</mat-label>
+    <input matInput type="number" placeholder="6" min="0.1" step="0.1" [(ngModel)]="return">
+    <span matSuffix>%</span>
+  </mat-form-field>
 
-  <label>
-    Range rate (percent)
-    <input type="number" [(ngModel)]="range" placeholder="Range rate" min="1" step="1" />
-  </label>
+  <mat-form-field appearance="fill" class="input-data__input">
+    <mat-label>Deviation range</mat-label>
+    <input matInput type="number" placeholder="4" min="1" max="10" step="1" [(ngModel)]="range">
+    <span matSuffix>%</span>
+  </mat-form-field>
 </div>
 
 <hr>
 
 <table>
   <tr>
-    <td>Fair Value</td>
+    <td>FairValue</td>
     <td> = (DividendLastYear</td>
-    <td> * (1 + ExpectedGrowthRate</td>
+    <td> * (1 + ExpectedDividendGrowthRate</td>
     <td>)) / (RequiredRateOfReturn</td>
     <td> - ExpectedGrowthRate)</td>
   </tr>

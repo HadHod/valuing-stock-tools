@@ -8,9 +8,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public ticker: string = '';
   public dividend: number = 2.536;
-  public growth: number = 2;
+  public growth: number = 4;
   public return: number = 7;
   public range: number = 4;
+
+  public growthTest: number = 5;
 
   get veryTop(): number {
     return 1 + (1 * this.range / 100 * 2);
