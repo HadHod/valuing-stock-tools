@@ -1,0 +1,99 @@
+<div class="dividend-discount-model">
+  <div class="input-data">
+    <mat-form-field appearance="fill" class="input-data__input">
+      <mat-label>Dividend last year</mat-label>
+      <input matInput type="number" placeholder="2.5" min="0.001" step="0.001" [(ngModel)]="dividend">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input-data__input">
+      <mat-label>Expected growth rate in 5Y</mat-label>
+      <input matInput type="number" placeholder="5" min="0.1" step="0.1" [(ngModel)]="growth">
+      <span matSuffix>%</span>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input-data__input">
+      <mat-label>Required rate of return (has to be higher than growth rate)</mat-label>
+      <input matInput type="number" placeholder="6" min="0.1" step="0.1" [(ngModel)]="return">
+      <span matSuffix>%</span>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input-data__input">
+      <mat-label>Deviation range</mat-label>
+      <input matInput type="number" placeholder="4" min="1" max="10" step="1" [(ngModel)]="range">
+      <span matSuffix>%</span>
+    </mat-form-field>
+  </div>
+
+  <mat-divider [vertical]="true"></mat-divider>
+
+  <table>
+    <tr>
+      <td>FairValue</td>
+      <td> = (DividendLastYear</td>
+      <td> * (1 + ExpectedDividendGrowthRate</td>
+      <td>)) / (RequiredRateOfReturn</td>
+      <td> - ExpectedDividendGrowthRate)</td>
+    </tr>
+    <tr>
+      <td>{{ getFairValue(1, 1) }}</td>
+      <td> = ({{ dividend }}</td>
+      <td> * (1 + {{ growth }}%</td>
+      <td>)) / ({{ return }}%</td>
+      <td> - {{ growth }}%)</td>
+    </tr>
+  </table>
+
+  <mat-divider [vertical]="true"></mat-divider>
+
+  <table class="fair-value-matrix">
+    <caption>Fair Value Matrix</caption>
+    <tr>
+      <td></td>
+      <th scope="col" class="header">Growth (-{{ range * 2 }}%)</th>
+      <th scope="col" class="header">Growth (-{{ range }}%)</th>
+      <th scope="col" class="header">Growth</th>
+      <th scope="col" class="header">Growth (+{{ range }}%)</th>
+      <th scope="col" class="header">Growth (+{{ range * 2 }}%)</th>
+    </tr>
+    <tr>
+      <th scope="row" class="header">Return (+{{ range * 2 }}%)</th>
+      <td class="edge">{{ getFairValue(veryBottom, veryTop) }}</td>
+      <td class="edge">{{ getFairValue(bottom, veryTop) }}</td>
+      <td class="edge">{{ getFairValue(1, veryTop) }}</td>
+      <td class="edge">{{ getFairValue(top, veryTop) }}</td>
+      <td class="edge">{{ getFairValue(veryTop, veryTop) }}</td>
+    </tr>
+    <tr>
+      <th scope="row" class="header">Return (+{{ range }}%)</th>
+      <td class="edge">{{ getFairValue(veryBottom, top) }}</td>
+      <td class="mid">{{ getFairValue(bottom, top) }}</td>
+      <td class="mid">{{ getFairValue(1, top) }}</td>
+      <td class="mid">{{ getFairValue(top, top) }}</td>
+      <td class="edge">{{ getFairValue(veryTop, top) }}</td>
+    </tr>
+    <tr>
+      <th scope="row" class="header">Return</th>
+      <td class="edge">{{ getFairValue(veryBottom, 1) }}</td>
+      <td class="mid">{{ getFairValue(bottom, 1) }}</td>
+      <td class="center">{{ getFairValue(1, 1) }}</td>
+      <td class="mid">{{ getFairValue(top, 1) }}</td>
+      <td class="edge">{{ getFairValue(veryTop, 1) }}</td>
+    </tr>
+    <tr>
+      <th scope="row" class="header">Return (-{{ range }}%)</th>
+      <td class="edge">{{ getFairValue(veryBottom, bottom) }}</td>
+      <td class="mid">{{ getFairValue(bottom, bottom) }}</td>
+      <td class="mid">{{ getFairValue(1, bottom) }}</td>
+      <td class="mid">{{ getFairValue(top, bottom) }}</td>
+      <td class="edge">{{ getFairValue(veryTop, bottom) }}</td>
+    </tr>
+    <tr>
+      <th scope="row" class="header">Return (-{{ range * 2 }}%)</th>
+      <td class="edge">{{ getFairValue(veryBottom, veryBottom) }}</td>
+      <td class="edge">{{ getFairValue(bottom, veryBottom) }}</td>
+      <td class="edge">{{ getFairValue(1, veryBottom) }}</td>
+      <td class="edge">{{ getFairValue(top, veryBottom) }}</td>
+      <td class="edge">{{ getFairValue(veryTop, veryBottom) }}</td>
+    </tr>
+  </table>
+</div>

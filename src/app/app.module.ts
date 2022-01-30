@@ -10,17 +10,22 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDividerModule } from '@angular/material/divider';
+
+import { DividendDiscountModelComponent } from './components/dividend-discount-model/dividend-discount-model.component';
 
 const MAT_MODULES = [
   MatSliderModule,
   MatInputModule,
   MatIconModule,
   MatTabsModule,
+  MatDividerModule,
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
+    DividendDiscountModelComponent,
   ],
   imports: [
     BrowserModule,
