@@ -1,0 +1,12 @@
+.discounted-cash-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+
+  .input-data {
+    &__input {
+      margin: 0 12px;
+    }
+  }
+}

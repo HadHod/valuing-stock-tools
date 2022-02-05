@@ -1,0 +1,150 @@
+<div class="discounted-cash-flow">
+  <div class="input-data">
+    <table>
+      <tr>
+        <th>Year</th>
+        <th>Free Cash Flow Estimations</th>
+        <th>Discount Factor</th>
+        <th>PV of Future Cash Flow</th>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <mat-label>First estimation year</mat-label>
+            <input matInput type="number" placeholder="2022" min="2000" max="3000" step="1" [(ngModel)]="year">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" placeholder="1" min="1" step="1" [(ngModel)]="freeCashFlow[0]">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="getDiscountFactor(1)" disabled>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="getPVOfFutureCashFlow(0)" disabled>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="year + 1" disabled>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" placeholder="1" min="1" step="1" [(ngModel)]="freeCashFlow[1]">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="getDiscountFactor(2)" disabled>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="getPVOfFutureCashFlow(1)" disabled>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="year + 2" disabled>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" placeholder="1" min="1" step="1" [(ngModel)]="freeCashFlow[2]">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="getDiscountFactor(3)" disabled>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="getPVOfFutureCashFlow(2)" disabled>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="year + 3" disabled>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" placeholder="1" min="1" step="1" [(ngModel)]="freeCashFlow[3]">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="getDiscountFactor(4)" disabled>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="getPVOfFutureCashFlow(3)" disabled>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput value="Terminal Value" disabled>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="terminalValue" disabled>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="getDiscountFactor(4)" disabled>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="input-data__input">
+            <input matInput type="number" [ngModel]="getPVOfFutureCashFlow(4)" disabled>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <mat-form-field appearance="fill" class="input-data__input">
+      <mat-label>Required return</mat-label>
+      <input matInput type="number" placeholder="7.5" min="1" max="20" step="0.1" [(ngModel)]="return">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input-data__input">
+      <mat-label>Perpetual Growth</mat-label>
+      <input matInput type="number" placeholder="2.5" min="1" max="20" step="0.1" [(ngModel)]="growth">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input-data__input">
+      <mat-label>Todays market cap value</mat-label>
+      <input matInput type="number" [ngModel]="marketCap" disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input-data__input">
+      <mat-label>Shares outstanding</mat-label>
+      <input matInput type="number" placeholder="200000" min="1" step="1" [(ngModel)]="shares">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input-data__input">
+      <mat-label>Fair value</mat-label>
+      <input matInput type="number" [ngModel]="fairValue" disabled>
+    </mat-form-field>
+  </div>
+</div>
