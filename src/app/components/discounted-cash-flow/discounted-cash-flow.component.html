@@ -4,8 +4,8 @@
       <tr>
         <th>Year</th>
         <th>Free Cash Flow Estimations</th>
-        <th>Discount Factor</th>
-        <th>PV of Future Cash Flow</th>
+        <th class="input-data__discount-factor">Discount FactorXd</th>
+        <th class="input-data__future-cash-flow">PV of Future Cash Flow</th>
       </tr>
       <tr>
         <td>
@@ -19,12 +19,12 @@
             <input matInput type="number" placeholder="1" min="1" step="1" [(ngModel)]="freeCashFlow[0]">
           </mat-form-field>
         </td>
-        <td>
+        <td class="input-data__discount-factor">
           <mat-form-field appearance="fill" class="input-data__input">
             <input matInput type="number" [ngModel]="getDiscountFactor(1)" disabled>
           </mat-form-field>
         </td>
-        <td>
+        <td class="input-data__discount-factor">
           <mat-form-field appearance="fill" class="input-data__input">
             <input matInput type="number" [ngModel]="getPVOfFutureCashFlow(0)" disabled>
           </mat-form-field>
@@ -41,12 +41,12 @@
             <input matInput type="number" placeholder="1" min="1" step="1" [(ngModel)]="freeCashFlow[1]">
           </mat-form-field>
         </td>
-        <td>
+        <td class="input-data__discount-factor">
           <mat-form-field appearance="fill" class="input-data__input">
             <input matInput type="number" [ngModel]="getDiscountFactor(2)" disabled>
           </mat-form-field>
         </td>
-        <td>
+        <td class="input-data__discount-factor">
           <mat-form-field appearance="fill" class="input-data__input">
             <input matInput type="number" [ngModel]="getPVOfFutureCashFlow(1)" disabled>
           </mat-form-field>
@@ -63,12 +63,12 @@
             <input matInput type="number" placeholder="1" min="1" step="1" [(ngModel)]="freeCashFlow[2]">
           </mat-form-field>
         </td>
-        <td>
+        <td class="input-data__discount-factor">
           <mat-form-field appearance="fill" class="input-data__input">
             <input matInput type="number" [ngModel]="getDiscountFactor(3)" disabled>
           </mat-form-field>
         </td>
-        <td>
+        <td class="input-data__discount-factor">
           <mat-form-field appearance="fill" class="input-data__input">
             <input matInput type="number" [ngModel]="getPVOfFutureCashFlow(2)" disabled>
           </mat-form-field>
@@ -85,12 +85,12 @@
             <input matInput type="number" placeholder="1" min="1" step="1" [(ngModel)]="freeCashFlow[3]">
           </mat-form-field>
         </td>
-        <td>
+        <td class="input-data__discount-factor">
           <mat-form-field appearance="fill" class="input-data__input">
             <input matInput type="number" [ngModel]="getDiscountFactor(4)" disabled>
           </mat-form-field>
         </td>
-        <td>
+        <td class="input-data__discount-factor">
           <mat-form-field appearance="fill" class="input-data__input">
             <input matInput type="number" [ngModel]="getPVOfFutureCashFlow(3)" disabled>
           </mat-form-field>
@@ -107,12 +107,12 @@
             <input matInput type="number" [ngModel]="terminalValue" disabled>
           </mat-form-field>
         </td>
-        <td>
+        <td class="input-data__discount-factor">
           <mat-form-field appearance="fill" class="input-data__input">
             <input matInput type="number" [ngModel]="getDiscountFactor(4)" disabled>
           </mat-form-field>
         </td>
-        <td>
+        <td class="input-data__discount-factor">
           <mat-form-field appearance="fill" class="input-data__input">
             <input matInput type="number" [ngModel]="getPVOfFutureCashFlow(4)" disabled>
           </mat-form-field>

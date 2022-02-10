@@ -9,4 +9,17 @@
       margin: 0 12px;
     }
   }
+
+  @media (max-width: 768px) {
+    .input-data {
+      &__discount-factor,
+      &__future-cash-flow {
+        display: none;
+      }
+    }
+
+    mat-form-field {
+      width: 150px;
+    }
+  }
 }
