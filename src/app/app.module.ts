@@ -14,6 +14,7 @@ import { MatDividerModule } from '@angular/material/divider';
 
 import { DividendDiscountModelComponent } from './components/dividend-discount-model/dividend-discount-model.component';
 import { DiscountedCashFlowComponent } from './components/discounted-cash-flow/discounted-cash-flow.component';
+import { SalesForecastComponent } from './components/sales-forecast/sales-forecast.component';
 
 const MAT_MODULES = [
   MatSliderModule,
@@ -28,6 +29,7 @@ const MAT_MODULES = [
     AppComponent,
     DividendDiscountModelComponent,
     DiscountedCashFlowComponent,
+    SalesForecastComponent,
   ],
   imports: [
     BrowserModule,
