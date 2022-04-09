@@ -1,1 +1,167 @@
-<p>sales-forecast works!</p>
+<div class="sales-forecast">
+  <mat-form-field appearance="fill" class="input-data__input">
+    <mat-label>Market capitalization (in biblions)</mat-label>
+    <input matInput type="number" placeholder="2.5" min="0.001" step="0.001" [(ngModel)]="marketCap">
+  </mat-form-field>
+
+  <table>
+    <tr>
+      <th>Year</th>
+      <th>Revenue Estimations</th>
+      <th>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <mat-label>P/E (margin in %)</mat-label>
+          <input matInput type="number" placeholder="10" min="1" step="0.5" [(ngModel)]="margin[0]">
+        </mat-form-field>
+      </th>
+      <th>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <mat-label>P/E (margin in %)</mat-label>
+          <input matInput type="number" placeholder="10" [min]="margin[0] + 0.5" step="0.5" [(ngModel)]="margin[1]">
+        </mat-form-field>
+      </th>
+      <th>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <mat-label>P/E (margin in %)</mat-label>
+          <input matInput type="number" placeholder="10" [min]="margin[1] + 0.5" step="0.5" [(ngModel)]="margin[2]">
+        </mat-form-field>
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <mat-label>First estimation year</mat-label>
+          <input matInput type="number" placeholder="2022" min="2000" max="3000" step="1" [(ngModel)]="year">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" placeholder="1" min="1" step="1" [(ngModel)]="revenue[0]">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(0, 0)" disabled>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(0, 1)" disabled>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(0, 2)" disabled>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [ngModel]="year + 1" disabled>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" placeholder="1" min="1" step="1" [(ngModel)]="revenue[1]">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(1, 0)" disabled>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(1, 1)" disabled>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(1, 2)" disabled>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [ngModel]="year + 2" disabled>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" placeholder="1" min="1" step="1" [(ngModel)]="revenue[2]">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(2, 0)" disabled>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(2, 1)" disabled>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(2, 2)" disabled>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [ngModel]="year + 3" disabled>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" placeholder="1" min="1" step="1" [(ngModel)]="revenue[3]">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(3, 0)" disabled>
+        </mat-form-field>
+      </td>
+      <td class="input-data__future-cash-flow">
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(3, 1)" disabled>
+        </mat-form-field>
+      </td>
+      <td class="input-data__future-cash-flow">
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(3, 2)" disabled>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [ngModel]="year + 4" disabled>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" placeholder="1" min="1" step="1" [(ngModel)]="revenue[4]">
+        </mat-form-field>
+      </td>
+      <td class="input-data__discount-factor">
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(4, 0)" disabled>
+        </mat-form-field>
+      </td>
+      <td class="input-data__future-cash-flow">
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(4, 1)" disabled>
+        </mat-form-field>
+      </td>
+      <td class="input-data__future-cash-flow">
+        <mat-form-field appearance="fill" class="input-data__input">
+          <input matInput type="number" [value]="calculatePriceToEarnings(4, 2)" disabled>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+</div>
