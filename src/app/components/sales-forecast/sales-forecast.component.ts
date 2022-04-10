@@ -15,4 +15,10 @@ export class SalesForecastComponent {
   public calculatePriceToEarnings(revenueIndex: number, marginIndex: number): number {
     return Math.round(this.marketCap / (this.revenue[revenueIndex] * this.margin[marginIndex] / 100));
   }
+
+  public calculatePercentageChange(index: number): string {
+    const increase: number = this.revenue[index] - this.revenue[index - 1];
+    const percent: number = increase / this.revenue[index - 1] * 100;
+    return `${percent >= 0 ? '+' : ''}${percent.toFixed(2)}%`;
+  }
 }
