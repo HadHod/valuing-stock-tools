@@ -8,7 +8,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 })
 export class SalesForecastComponent {
   public marketCap: number = 12.345;
-  public year: number = new Date().getFullYear();
+  public currentDate: Date = new Date();
+  public year: number = this.currentDate.getFullYear();
   public margin: number[] = [10, 15, 20];
   public revenue: number[] = [1, 2, 3, 4, 5];
 

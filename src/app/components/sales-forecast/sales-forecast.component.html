@@ -1,6 +1,6 @@
 <div class="sales-forecast">
   <mat-form-field appearance="fill">
-    <mat-label>Market capitalization (in biblions)</mat-label>
+    <mat-label>Market capitalization</mat-label>
     <input matInput type="number" placeholder="2.5" min="0.001" step="0.001" [(ngModel)]="marketCap">
   </mat-form-field>
 
@@ -168,4 +168,6 @@
       </td>
     </tr>
   </table>
+
+  {{ currentDate | date: 'yyyy-MM-dd' }}
 </div>
